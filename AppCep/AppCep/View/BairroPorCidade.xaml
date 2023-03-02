@@ -33,10 +33,31 @@
                     </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-
+                            <ViewCell>
+                                <StackLayout>
+                                <Label Text="{Binding descricao_bairro}"/>
+                            </StackLayout>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <StackLayout x:Name="carregando"
+                             IsVisible="false"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+
+                    <Frame Opacity="0.95"
+                           BackgroundColor="#333"
+                           CornerRadius="10"
+                           BorderColor="#00a54f"
+                           Padding="80">
+                        <StackLayout>
+                            <ActivityIndicator IsRunning="True" Color="#00a54f" />
+                            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="#00a54f"/>
+                        </StackLayout>
+
+                    </Frame>
+                </StackLayout>
             </StackLayout>
 
         </AbsoluteLayout>
