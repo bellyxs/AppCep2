@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppCep.View.BairroPorCidade" Title="Bairro Por Cidade">
+             x:Class="AppCep.View.BuscaLogradouroPorBairroECidade">
     <ContentPage.Content>
 
         <AbsoluteLayout HorizontalOptions="FillAndExpand"
@@ -9,19 +9,23 @@
 
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
+
                     <Picker x:Name="pck_estado"
                             SelectedIndexChanged="pck_estado_SelectedIndexChanged"
+                            ItemDisplayBinding="{Binding UF}"
                             Title="Selecione o Estado:">
-                        <Picker.Items>
-                            <x:String>SP</x:String>
-                            <x:String>MG</x:String>
-                        </Picker.Items>
                     </Picker>
 
                     <Picker x:Name="pck_cidade"
                             SelectedIndexChanged="pck_cidade_SelectedIndexChanged"
-                            ItemDisplayBinding="{Binding descricao}"
-                            Title="Selecione a Cidade">
+                            ItemDisplayBinding="{Binding descricao_cidade}"
+                            Title="Selecione a Cidade:">
+                    </Picker>
+
+                    <Picker x:Name="pck_bairro"
+                            SelectedIndexChanged="pck_bairro_SelectedIndexChanged"
+                            ItemDisplayBinding="{Binding descricao_bairro}"
+                            Title="Selecione o Bairro">
                     </Picker>
                 </StackLayout>
 
@@ -35,7 +39,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout>
-                                    <Label Text="{Binding descricao_bairro}"/>
+                                    <Label Text="{Binding descricao}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

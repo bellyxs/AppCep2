@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace AppCep.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuscaCepPorLogradouro : ContentPage
+    public partial class BuscaEnderecoPorCep : ContentPage
     {
-        public BuscaCepPorLogradouro()
+        public BuscaEnderecoPorCep()
         {
             InitializeComponent();
         }
@@ -25,11 +26,9 @@ namespace AppCep.View
             {
                 carregando.IsRunning = true;
 
-                List<Cep> arr_ceps =
-                    await DataService.GetCepsByLogradouro(
-                        txt_logradouro.Text);
+                List<Endereco> end = await DataService.GetEnderecoByCep(txt_end.Text);
 
-                lst_ceps.ItemsSource = arr_ceps;
+                lista_endereco.ItemsSource = end;
 
             }
             catch (Exception ex)
@@ -41,8 +40,6 @@ namespace AppCep.View
                 carregando.IsRunning = false;
 
             }
-
         }
     }
 }
-

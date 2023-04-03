@@ -9,18 +9,18 @@
 
             <Label Grid.Row="0" Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   Text="Api Busca Cep"/>
+                   Text="Api Busca CEP"/>
 
             <Button Grid.Row="1" Grid.Column="0"
                     Text="Buscar CEP" Clicked="Button_Clicked" />
 
             <Button Grid.Row="1" Grid.Column="1"
-                    Text="Buscar Cidades" />
+                    Text="Buscar Cidades" Clicked="Button_Clicked_1" />
 
             <Button Grid.Row="2" Grid.Column="0"
-                    Text="Buscar Ruas de Bairro" />
+                    Text="Buscar Ruas de Bairro" Clicked="Button_Clicked_2" />
 
-            <Button Grid.Row="2" Grid.Column="1" Text="" />
+            <Button Grid.Row="2" Grid.Column="1" Text="Buscar Endereço por CEP" Clicked="Button_Clicked_3" />
 
         </Grid>
     </ContentPage.Content>
