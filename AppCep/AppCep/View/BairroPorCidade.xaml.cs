@@ -48,23 +48,24 @@ namespace AppCep.View
 
         private async void pck_cidade_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             try
             {
+                carregando.IsRunning = true;
+                lista_bairros.Clear();
 
                 Picker disparador = sender as Picker;
-
                 int id_cidade = disparador.SelectedIndex;
-
                 List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(id_cidade);
-                lista_cidades.Clear();
 
                 arr_bairros.ForEach(item => lista_bairros.Add(item));
-
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Erro", ex.Message, "Ok");
+            }
+            finally
+            {
+                carregando.IsRunning = false;
             }
         }
     }

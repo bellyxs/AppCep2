@@ -3,36 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppCep.View.BuscaLogradouroPorBairroECidade">
     <ContentPage.Content>
-
-        <AbsoluteLayout HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
-
+        <AbsoluteLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
-
+                <StackLayout>
                     <Picker x:Name="pck_estado"
-                            SelectedIndexChanged="pck_estado_SelectedIndexChanged"
-                            ItemDisplayBinding="{Binding UF}"
-                            Title="Selecione o Estado:">
+                            SelectedIndexChanged="pck_estado_SelectedIndexChanged"  
+                            Title="Selecione o estado"
+                            >
+                        <Picker.Items>
+                            <x:String>SP</x:String>
+                            <x:String>MG</x:String>
+                            <x:String>RJ</x:String>
+                        </Picker.Items>
                     </Picker>
-
                     <Picker x:Name="pck_cidade"
-                            SelectedIndexChanged="pck_cidade_SelectedIndexChanged"
-                            ItemDisplayBinding="{Binding descricao_cidade}"
-                            Title="Selecione a Cidade:">
+                            SelectedIndexChanged="pck_cidade_SelectedIndexChanged" 
+                            ItemDisplayBinding="{Binding descricao}"
+                            Title="Selecione a cidade">
                     </Picker>
-
-                    <Picker x:Name="pck_bairro"
-                            SelectedIndexChanged="pck_bairro_SelectedIndexChanged"
-                            ItemDisplayBinding="{Binding descricao_bairro}"
-                            Title="Selecione o Bairro">
+                    <Picker
+                        x:Name="pck_bairro"
+                        SelectedIndexChanged="pck_bairro_SelectedIndexChanged"
+                        ItemDisplayBinding="{Binding descricao_bairro}"
+                        Title="Selecione o seu Bairro">
                     </Picker>
                 </StackLayout>
 
-                <ListView x:Name="lst_bairros">
+                <ActivityIndicator x:Name="carregando" IsRunning="False"/>
+                <ListView x:Name="lst_end">
                     <ListView.Header>
                         <StackLayout>
-                            <Label Text="Nome do Bairro:" />
+                            <Label Text="Seu Endereço:"/>
                         </StackLayout>
                     </ListView.Header>
                     <ListView.ItemTemplate>
@@ -45,24 +48,10 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <StackLayout x:Name="carregando"
-                             IsVisible="false"
-                             AbsoluteLayout.LayoutFlags="PositionProportional"
-                             AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
 
-                    <Frame Opacity="0.95"
-                           BackgroundColor="#333"
-                           CornerRadius="10"
-                           BorderColor="Black"
-                           Padding="80">
-                        <StackLayout>
-                            <ActivityIndicator IsRunning="True" Color="Black" />
-                            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
-                        </StackLayout>
 
-                    </Frame>
-                </StackLayout>
             </StackLayout>
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

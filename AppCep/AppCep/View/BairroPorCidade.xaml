@@ -3,62 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppCep.View.BairroPorCidade" Title="Bairro Por Cidade">
     <ContentPage.Content>
-
-        <AbsoluteLayout HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
-
+    <AbsoluteLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+        <StackLayout>
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Picker x:Name="pck_estado"
-                            SelectedIndexChanged="pck_estado_SelectedIndexChanged"
-                            Title="Selecione o Estado:">
-                        <Picker.Items>
-                            <x:String>SP</x:String>
-                            <x:String>MG</x:String>
-                        </Picker.Items>
-                    </Picker>
+                <Picker x:Name="pck_estado"
+                            SelectedIndexChanged="pck_estado_SelectedIndexChanged"  
+                            Title="Selecione o estado"
+                            >
+                    <Picker.Items>
+                        <x:String>SP</x:String>
+                        <x:String>MG</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker
+                        x:Name="pck_cidade"
+                        SelectedIndexChanged="pck_cidade_SelectedIndexChanged"
+                        ItemDisplayBinding="{Binding descricao}"
+                        Title="Selecione a Cidade"
+                        >
 
-                    <Picker x:Name="pck_cidade"
-                            SelectedIndexChanged="pck_cidade_SelectedIndexChanged"
-                            ItemDisplayBinding="{Binding descricao}"
-                            Title="Selecione a Cidade">
-                    </Picker>
-                </StackLayout>
-
+                </Picker>
+            </StackLayout>
+                <ActivityIndicator x:Name="carregando" IsRunning="False"/>
                 <ListView x:Name="lst_bairros">
-                    <ListView.Header>
-                        <StackLayout>
-                            <Label Text="Nome do Bairro:" />
-                        </StackLayout>
-                    </ListView.Header>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding descricao_bairro}"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <StackLayout x:Name="carregando"
+                <ListView.Header>
+                    <StackLayout>
+                        <Label Text="Nome do Bairro: "/>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding descricao_bairro}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout x:Name="loading"
                              IsVisible="false"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
                              AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
 
-                    <Frame Opacity="0.95"
-                           BackgroundColor="#333"
+                <Frame Opacity="0.95"
+                           BackgroundColor="#A3D4FF"
                            CornerRadius="10"
-                           BorderColor="Black"
+                           BorderColor="#000000"
                            Padding="80">
-                        <StackLayout>
-                            <ActivityIndicator IsRunning="True" Color="Black" />
-                            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
-                        </StackLayout>
+                    <StackLayout>
+                        <ActivityIndicator IsRunning="True" Color="Black" />
+                        <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
+                    </StackLayout>
 
-                    </Frame>
-                </StackLayout>
+                </Frame>
             </StackLayout>
-        </AbsoluteLayout>
+        </StackLayout>
+    </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

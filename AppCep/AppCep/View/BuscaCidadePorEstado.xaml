@@ -48,7 +48,7 @@
                              >
 
                     <Frame Opacity="0.95"
-                           BackgroundColor="#333"
+                           BackgroundColor="#A3D4FF"
                            CornerRadius="10"
                            BorderColor="Black"
                            Padding="80">

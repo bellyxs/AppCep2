@@ -1,7 +1,5 @@
 ﻿using AppCep.Model;
 using AppCep.Service;
-using AppCep.Model;
-using AppCep.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -73,7 +71,7 @@ namespace AppCep.View
 
                 if (bairro_selecionado != null)
                 {
-                    List<Logradouro> arr_end = await DataService.GetLogradouroByBairroAndIdCidade(bairro_selecionado.descricao_bairro, cidade_escolhida.id_cidade);
+                    List<Logradouro> arr_end = await DataService.GetLogradouroByBairroAndIdCidade(bairro_selecionado.descricao_bairro, city.id_cidade);
 
                     lst_end.ItemsSource = arr_end;
                 }

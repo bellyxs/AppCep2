@@ -19,26 +19,29 @@ namespace AppCep.View
             InitializeComponent();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            try
             {
-                carregando.IsRunning = true;
+                try
+                {
+                    carregando.IsRunning = true;
 
-                List<Cep> arr_ceps =
-                    await DataService.GetCepsByLogradouro(
-                        txt_logradouro.Text);
+                    List<Cep> arr_ceps =
+                        await DataService.GetCepsByLogradouro(
+                            txt_logradouro.Text);
 
-                lst_ceps.ItemsSource = arr_ceps;
+                    lst_ceps.ItemsSource = arr_ceps;
 
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Ops", ex.Message, "OK");
-            }
-            finally
-            {
-                carregando.IsRunning = false;
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Ops", ex.Message, "OK");
+                }
+                finally
+                {
+                    carregando.IsRunning = false;
+
+                }
 
             }
 
