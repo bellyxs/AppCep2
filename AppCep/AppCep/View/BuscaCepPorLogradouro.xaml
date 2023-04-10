@@ -4,44 +4,50 @@
              x:Class="AppCep.View.BuscaCepPorLogradouro">
     <ContentPage.Content>
         <StackLayout>
-
             <StackLayout Orientation="Horizontal">
+
                 <SearchBar x:Name="txt_logradouro"
-                           Placeholder="Qual é a sua rua?" />
-                <Button Text="Buscar" Clicked="Button_Clicked_1"/>
+                           Placeholder="Qual é sua rua?"
+                           />
+                <Button Text="Buscar" Clicked="Button_Clicked"/>
             </StackLayout>
+
             <ActivityIndicator x:Name="carregando" IsRunning="False"/>
-            
-        <StackLayout>
+
             <ListView x:Name="lst_ceps">
                 <ListView.Header>
                     <Grid ColumnDefinitions="Auto, *, *, Auto"
-                          RowDefinitions="Auto">
+                          RowDefinitions="Auto"
+                          >
+
                         <Label Grid.Row="0" Grid.Column="0"
-                               Text="CEP" />
+                               Text="CEP: "/>
+
                         <Label Grid.Row="0" Grid.Column="1"
-                               Text="Logradouro" />
+                               Text="Logradouro: "/>
+
                         <Label Grid.Row="0" Grid.Column="2"
-                               Text="Cidade" />
+                               Text="Cidade: "/>
+
                         <Label Grid.Row="0" Grid.Column="3"
-                               Text="UF" />
+                               Text="UF: "/>
+
                     </Grid>
                 </ListView.Header>
-
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            
-                            
+                            <Grid ColumnDefinitions="*, *, *, *"
+                                  RowDefinitions="Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding CEP}"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding descricao}"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding descricao_cidade}"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding UF}"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
-                    
                 </ListView.ItemTemplate>
-                
             </ListView>
-                      
-            
         </StackLayout>
-    </StackLayout>
-        </ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>

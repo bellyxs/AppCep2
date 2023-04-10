@@ -67,11 +67,11 @@ namespace AppCep.View
 
                 Picker disparador = sender as Picker;
 
-                Bairro bairro_selecionado = disparador.SelectedItem as Bairro;
+                Bairro bairro = disparador.SelectedItem as Bairro;
 
-                if (bairro_selecionado != null)
+                if (bairro != null)
                 {
-                    List<Logradouro> arr_end = await DataService.GetLogradouroByBairroAndIdCidade(bairro_selecionado.descricao_bairro, city.id_cidade);
+                    List<Logradouro> arr_end = await DataService.GetLogradouroByBairroAndIdCidade(bairro.descricao_bairro, city.id_cidade);
 
                     lst_end.ItemsSource = arr_end;
                 }
@@ -97,17 +97,17 @@ namespace AppCep.View
 
                 Picker disparador = sender as Picker;
 
-                Cidade cidade_selecionada = disparador.SelectedItem as Cidade;
+                Cidade cidade = disparador.SelectedItem as Cidade;
 
                 lst_bairro.Clear();
 
-                List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(cidade_selecionada.id_cidade);
+                List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(cidade.id_cidade);
 
 
                 arr_bairros.ForEach(item => lst_bairro.Add(item));
                 Console.WriteLine(arr_bairros);
 
-                this.city = cidade_selecionada;
+                this.city = cidade;
 
             }
             catch (Exception ex)

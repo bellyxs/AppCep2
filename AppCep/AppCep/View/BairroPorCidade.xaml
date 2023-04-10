@@ -15,7 +15,9 @@
                     <Picker.Items>
                         <x:String>SP</x:String>
                         <x:String>MG</x:String>
-                    </Picker.Items>
+                        <x:String>RJ</x:String>
+
+                        </Picker.Items>
                 </Picker>
                 <Picker
                         x:Name="pck_cidade"
